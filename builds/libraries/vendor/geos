@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
-# Build Path: /app/.heroku/vendor3/
+# Build Path: /app/.heroku/vendor/
 
 OUT_PREFIX=$1
 
 # Use new path, containing autoconf.
-export PATH="/app/.heroku/python3/bin/:$PATH"
+export PATH="/app/.heroku/python/bin/:$PATH"
 hash -r
 
 

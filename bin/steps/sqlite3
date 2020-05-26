@@ -57,16 +57,16 @@ sqlite3_install() {
 }
 
 buildpack_sqlite3_install() {
-  HEROKU_PYTHON_DIR="$BUILD_DIR/.heroku/python3"
+  HEROKU_PYTHON_DIR="$BUILD_DIR/.heroku/python"
 
-  SQLITE3_VERSION_FILE="$BUILD_DIR/.heroku/python3-sqlite3-version"
+  SQLITE3_VERSION_FILE="$BUILD_DIR/.heroku/python-sqlite3-version"
   if [ -f "$SQLITE3_VERSION_FILE" ]; then
     INSTALLED_SQLITE3_VERSION=$(cat "$SQLITE3_VERSION_FILE")
   fi
 
   puts-step "Installing SQLite3"
 
-  if sqlite3_install "$BUILD_DIR/.heroku/python3" ; then
+  if sqlite3_install "$BUILD_DIR/.heroku/python" ; then
     mcount "success.python.sqlite3"
   else
     echo "Sqlite3 failed to install."

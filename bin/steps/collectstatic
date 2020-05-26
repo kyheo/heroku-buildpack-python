@@ -18,7 +18,7 @@ MANAGE_FILE=$(find . -maxdepth 3 -type f -name 'manage.py' -printf '%d\t%P\n' | 
 MANAGE_FILE=${MANAGE_FILE:-fakepath}
 
 # Legacy file-based support for $DISABLE_COLLECTSTATIC
-[ -f .heroku/collectstatic_disabled3 ] && DISABLE_COLLECTSTATIC=1
+[ -f .heroku/collectstatic_disabled ] && DISABLE_COLLECTSTATIC=1
 
 # Ensure that Django is explicitly specified in requirements.txt
 sp-grep -s django && DJANGO_INSTALLED=1

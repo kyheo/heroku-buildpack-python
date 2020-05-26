@@ -44,11 +44,11 @@ if [ ! "$SKIP_PIP_INSTALL" ]; then
         puts-warn "For more information, check out https://www.djangoproject.com/download/#supported-versions"
     fi
 
-    if [ ! -f "$BUILD_DIR/.heroku/python3/bin/pip" ]; then
+    if [ ! -f "$BUILD_DIR/.heroku/python/bin/pip" ]; then
         exit 1
     fi
 
-    /app/.heroku/python3/bin/pip install -r "$BUILD_DIR/requirements.txt" --exists-action=w --src=/app/.heroku/src3 --disable-pip-version-check --no-cache-dir 2>&1 | tee "$WARNINGS_LOG" | cleanup | indent
+    /app/.heroku/python/bin/pip install -r "$BUILD_DIR/requirements.txt" --exists-action=w --src=/app/.heroku/src --disable-pip-version-check --no-cache-dir 2>&1 | tee "$WARNINGS_LOG" | cleanup | indent
     PIP_STATUS="${PIPESTATUS[0]}"
     set -e
 
@@ -59,14 +59,14 @@ if [ ! "$SKIP_PIP_INSTALL" ]; then
         exit 1
     fi
 
-    cp requirements.txt .heroku/python3/requirements-declared.txt
-    /app/.heroku/python3/bin/pip freeze --disable-pip-version-check > .heroku/python3/requirements-installed.txt
+    cp requirements.txt .heroku/python/requirements-declared.txt
+    /app/.heroku/python/bin/pip freeze --disable-pip-version-check > .heroku/python/requirements-installed.txt
 
     # Install test dependencies, for CI.
     if [ "$INSTALL_TEST" ]; then
         if [[ -f "$1/requirements-test.txt" ]]; then
             puts-step "Installing test dependencies…"
-            /app/.heroku/python3/bin/pip install -r "$1/requirements-test.txt" --exists-action=w --src=./.heroku/src3 --disable-pip-version-check --no-cache-dir 2>&1 | cleanup | indent
+            /app/.heroku/python/bin/pip install -r "$1/requirements-test.txt" --exists-action=w --src=./.heroku/src --disable-pip-version-check --no-cache-dir 2>&1 | cleanup | indent
         fi
     fi
 fi
