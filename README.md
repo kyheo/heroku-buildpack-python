@@ -14,7 +14,7 @@ See it in Action
 ----------------
 ```
 $ ls
-my-application		requirements.txt	runtime.txt
+my-application		requirements.txt	runtime_3.txt
 
 $ git push heroku master
 Counting objects: 4, done.
@@ -42,12 +42,12 @@ remote:
 
 A `requirements.txt` must be present at the root of your application's repository to deploy.
 
-To specify your python version, you also need a `runtime.txt` file - unless you are using the default Python runtime version.
+To specify your python version, you also need a `runtime_3.txt` file - unless you are using the default Python runtime version.
 
 Current default Python Runtime: Python 3.6.9
 
 Alternatively, you can provide a `setup.py` file, or a `Pipfile`.
-Using `pipenv` will generate `runtime.txt` at build time if one of the field `python_version` or `python_full_version` is specified in the `requires` section of your `Pipfile`.
+Using `pipenv` will generate `runtime_3.txt` at build time if one of the field `python_version` or `python_full_version` is specified in the `requires` section of your `Pipfile`.
 
 Specify a Buildpack Version
 ---------------------------

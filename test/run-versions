@@ -15,7 +15,7 @@ testPythonDefault() {
 
 testPython2() {
     updateVersion "python2" $LATEST_27
-    echo $LATEST_27 > "runtime.txt"
+    echo $LATEST_27 > "runtime_3.txt"
     compile "python2"
     assertCaptured $LATEST_27
     if [[ $(date "+%Y") > "2019" ]]; then

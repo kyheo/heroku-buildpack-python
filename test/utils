@@ -73,7 +73,7 @@ release()
 
 updateVersion()
 {
-  echo "$2" > "test/fixtures/${1}/runtime.txt"
+  echo "$2" > "test/fixtures/${1}/runtime_3.txt"
 }
 
 assertCapturedEquals()

@@ -66,7 +66,7 @@ DEFAULT_PYTHON_STACK="cedar-14"
 # If pip doesn't match this version (the version we install), run the installer.
 PIP_UPDATE="20.0.2"
 
-for file in "$BUILD_DIR/runtime.txt" "$CACHE_DIR/.heroku/python-version" ; do
+for file in "$BUILD_DIR/runtime_3.txt" "$CACHE_DIR/.heroku/python-version" ; do
     [ -f "$file" ] || continue
 
     version=$(tr -d '[:space:]' < "$file")
@@ -221,14 +221,14 @@ export CACHED_PYTHON_STACK
 
 # Pipenv Python version support.
 # Detect the version of Python requested from a Pipfile (e.g. python_version or python_full_version).
-# Convert it to a runtime.txt file.
+# Convert it to a runtime_3.txt file.
 
 # shellcheck source=bin/steps/pipenv-python-version
 source "$BIN_DIR/steps/pipenv-python-version"
 
 # If no runtime was provided by the user, assume the default Python runtime version.
-if [ ! -f runtime.txt ]; then
-  echo "$DEFAULT_PYTHON_VERSION" > runtime.txt
+if [ ! -f runtime_3.txt ]; then
+  echo "$DEFAULT_PYTHON_VERSION" > runtime_3.txt
 fi
 
 # Create the directory for .profile.d, if it doesn't exist.

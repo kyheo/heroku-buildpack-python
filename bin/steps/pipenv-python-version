@@ -4,7 +4,7 @@
 
 if [[ -f $BUILD_DIR/Pipfile ]]; then
 
-    if [[ ! -f $BUILD_DIR/runtime.txt ]]; then
+    if [[ ! -f $BUILD_DIR/runtime_3.txt ]]; then
         if [[ ! -f $BUILD_DIR/Pipfile.lock ]]; then
             puts-warn "No 'Pipfile.lock' found! We recommend you commit this into your repository."
         fi
@@ -12,23 +12,23 @@ if [[ -f $BUILD_DIR/Pipfile ]]; then
             set +e
             PYTHON=$(jq -r '._meta.requires.python_full_version' "$BUILD_DIR/Pipfile.lock")
             if [[ "$PYTHON" != "null" ]]; then
-                echo "python-$PYTHON" > "$BUILD_DIR/runtime.txt"
+                echo "python-$PYTHON" > "$BUILD_DIR/runtime_3.txt"
             fi
             set -e
 
             if [[ "$PYTHON" == "null" ]]; then
                 PYTHON=$(jq -r '._meta.requires.python_version' "$BUILD_DIR/Pipfile.lock")
                 if [ "$PYTHON" = 2.7 ]; then
-                    echo "$LATEST_27" > "$BUILD_DIR/runtime.txt"
+                    echo "$LATEST_27" > "$BUILD_DIR/runtime_3.txt"
                 fi
                 if [ "$PYTHON" = 3.6 ]; then
-                    echo "$LATEST_36" > "$BUILD_DIR/runtime.txt"
+                    echo "$LATEST_36" > "$BUILD_DIR/runtime_3.txt"
                 fi
                 if [ "$PYTHON" = 3.7 ]; then
-                    echo "$LATEST_37" > "$BUILD_DIR/runtime.txt"
+                    echo "$LATEST_37" > "$BUILD_DIR/runtime_3.txt"
                 fi
                 if [ "$PYTHON" = 3.8 ]; then
-                    echo "$LATEST_38" > "$BUILD_DIR/runtime.txt"
+                    echo "$LATEST_38" > "$BUILD_DIR/runtime_3.txt"
                 fi
             fi
 

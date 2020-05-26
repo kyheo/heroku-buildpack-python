@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 set +e
-runtime-fixer runtime.txt
-PYTHON_VERSION=$(cat runtime.txt)
+runtime-fixer runtime_3.txt
+PYTHON_VERSION=$(cat runtime_3.txt)
 
 # The location of the pre-compiled python binary.
 VENDORED_PYTHON="${VENDOR_URL}/runtimes/$PYTHON_VERSION.tar.gz"

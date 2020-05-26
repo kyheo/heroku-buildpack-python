@@ -37,7 +37,7 @@ describe "Python" do
     let(:stack) { ENV["HEROKU_TEST_STACK"] || DEFAULT_STACK }
     it "works with 3.7.6" do
       version = "3.7.6"
-      before_deploy = -> { run!(%Q{echo "python-#{version}" >> runtime.txt}) }
+      before_deploy = -> { run!(%Q{echo "python-#{version}" >> runtime_3.txt}) }
       Hatchet::Runner.new("python_default", before_deploy: before_deploy, stack: stack).deploy do |app|
         expect(app.run('python -V')).to match(version)
       end
@@ -45,7 +45,7 @@ describe "Python" do
 
     it "works with 3.8.2" do
       version = "3.8.2"
-      before_deploy = -> { run!(%Q{echo "python-#{version}" >> runtime.txt}) }
+      before_deploy = -> { run!(%Q{echo "python-#{version}" >> runtime_3.txt}) }
       Hatchet::Runner.new("python_default", before_deploy: before_deploy, stack: stack).deploy do |app|
         expect(app.run('python -V')).to match(version)
       end
@@ -53,7 +53,7 @@ describe "Python" do
 
     it "fails with a bad version" do
       version = "3.8.2.lol"
-      before_deploy = -> { run!(%Q{echo "python-#{version}" >> runtime.txt}) }
+      before_deploy = -> { run!(%Q{echo "python-#{version}" >> runtime_3.txt}) }
       Hatchet::Runner.new("python_default", before_deploy: before_deploy, stack: stack, allow_failure: true).deploy do |app|
         expect(app.output).to match("not available for this stack")
       end
