@@ -13,20 +13,20 @@ testGitEgg() {
 testSmartRequirements() {
   local cache_dir="$(mktmpdir)"
   compile "requirements-standard" "$cache_dir"
-  assertFile "requests" ".heroku/python/requirements-declared.txt"
+  assertFile "requests" ".heroku/python3/requirements-declared.txt"
   assertCapturedSuccess
   compile "psycopg2" "$cache_dir"
-  assertFile "psycopg2" ".heroku/python/requirements-declared.txt"
+  assertFile "psycopg2" ".heroku/python3/requirements-declared.txt"
   assertCapturedSuccess
 }
 
 testStackChange() {
   local cache_dir="$(mktmpdir)"
   mkdir -p "${cache_dir}/.heroku"
-  echo "different-stack" > "${cache_dir}/.heroku/python-stack"
+  echo "different-stack" > "${cache_dir}/.heroku/python3-stack"
   compile "requirements-standard" "$cache_dir"
   assertCaptured "clearing cache"
-  assertFile "$STACK" ".heroku/python-stack"
+  assertFile "$STACK" ".heroku/python3-stack"
   assertCapturedSuccess
 }
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Build Path: /app/.heroku/python/
+# Build Path: /app/.heroku/python3/
 
 OUT_PREFIX=$1
 BIN_DIR="$(cd "$(dirname "$0")"/../.. || exit; pwd)/bin"

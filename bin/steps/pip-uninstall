@@ -7,20 +7,20 @@ source "$BIN_DIR/utils"
 
 if [ ! "$SKIP_PIP_INSTALL" ]; then
 
-  if [[ -f .heroku/python/requirements-declared.txt ]]; then
+  if [[ -f .heroku/python3/requirements-declared.txt ]]; then
 
-    cp .heroku/python/requirements-declared.txt requirements-declared.txt
+    cp .heroku/python3/requirements-declared.txt requirements-declared.txt
 
 
-    if ! pip-diff --stale requirements-declared.txt requirements.txt --exclude setuptools pip wheel > .heroku/python/requirements-stale.txt; then
+    if ! pip-diff --stale requirements-declared.txt requirements.txt --exclude setuptools pip wheel > .heroku/python3/requirements-stale.txt; then
       mcount "failure.bad-requirements"
     fi
 
     rm -fr requirements-declared.txt
 
-    if [[ -s .heroku/python/requirements-stale.txt ]]; then
+    if [[ -s .heroku/python3/requirements-stale.txt ]]; then
       puts-step "Uninstalling stale dependencies"
-      /app/.heroku/python/bin/pip uninstall -r .heroku/python/requirements-stale.txt -y --exists-action=w --disable-pip-version-check | cleanup | indent
+      /app/.heroku/python3/bin/pip uninstall -r .heroku/python3/requirements-stale.txt -y --exists-action=w --disable-pip-version-check | cleanup | indent
     fi
   fi
 
